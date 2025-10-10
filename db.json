@@ -1,0 +1,543 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "number": "1234567890",
+      "password": "Password123"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "number": "9876543210",
+      "password": "Password123"
+    },
+    {
+      "id": "1399",
+      "name": "rinshaa fthm",
+      "email": "rinshaa279@gmail.com",
+      "number": "09562703957",
+      "password": "A12345678"
+    },
+    {
+      "id": "a37a",
+      "name": "saniya",
+      "email": "saniya@gmail.com",
+      "number": "09562703957",
+      "password": "Saniyasaniya"
+    },
+    {
+      "id": "5f69",
+      "name": "sahla",
+      "email": "sahla@gmail.com",
+      "number": "1234567890",
+      "password": "S1234567"
+    },
+    {
+      "id": "121b",
+      "name": "nimshi",
+      "email": "nimshi@gmail.com",
+      "number": "09562703957",
+      "password": "N1234567"
+    },
+    {
+      "id": "4244",
+      "name": "rashad",
+      "email": "rashad@gmail.com",
+      "number": "1345678901",
+      "password": "R1234567"
+    },
+    {
+      "id": "e93f",
+      "name": "rihaan",
+      "email": "rihaan@gmail.com",
+      "number": "1234567890",
+      "password": "R1234567"
+    },
+    {
+      "id": "5ace",
+      "name": "sahla sherin",
+      "email": "sahlasherin@gmail.com",
+      "number": "123456789",
+      "password": "12345678"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Catual  code set ",
+      "price": "490",
+      "rating": "4.7",
+      "image": "https://i.pinimg.com/736x/0a/b0/03/0ab0031221f80f638536746f561d093b.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "2",
+      "name": " printed Shirt with pant ",
+      "price": "790",
+      "rating": "4",
+      "image": "https://i.pinimg.com/736x/2c/bf/98/2cbf98b93c6dbc4f530c286dcc91326c.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "3",
+      "name": "3 set printed shirt catual pand with shall",
+      "price": "999",
+      "rating": "4.3",
+      "image": "https://i.pinimg.com/736x/f8/ae/52/f8ae52f7d8fb8c1e0f68ae5e5a030cb7.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "4",
+      "name": "red printed code set",
+      "price": "1100",
+      "rating": "4.7",
+      "image": "https://i.pinimg.com/736x/37/a1/54/37a154fe3b5f43748c3f3023e3def494.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "5",
+      "name": "modest code set",
+      "price": "165",
+      "rating": "5",
+      "image": "https://i.pinimg.com/1200x/ce/3e/ab/ce3eabbcab463b4488a6b03695bda999.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "6",
+      "name": "modest off white top with shall and pand",
+      "price": "1300",
+      "rating": "3.8",
+      "image": "https://i.pinimg.com/736x/36/e1/fa/36e1fa15da9377f8c11d55b34e11be85.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "7",
+      "name": "",
+      "price": "1300",
+      "rating": "4.1",
+      "image": "https://i.pinimg.com/1200x/52/b4/66/52b46635d364e0c8725f2804ed6a6930.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "8",
+      "name": "Modest mixed cream color set",
+      "price": "1200",
+      "rating": "4.2",
+      "image": "https://i.pinimg.com/736x/09/c8/96/09c896c3583329a66385e7294ce96cc9.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "9",
+      "name": "Modest wear all size available",
+      "price": "999",
+      "rating": "4.3",
+      "image": "https://i.pinimg.com/1200x/27/67/65/276765b859fa4c20fd5604480bcbc373.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "long woment shir",
+      "price": "490",
+      "rating": "4.4",
+      "image": "https://i.pinimg.com/736x/58/b3/54/58b3541aaa03dfd8cf29c8651f671480.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "11",
+      "name": "Women's  Mesh Elegant Mid-Length  | Color: cream | Size: Various",
+      "rating": "4.5",
+      "price": "600",
+      "image": "https://i.pinimg.com/736x/52/64/1f/52641f5393f56d0d80a652ba0a40616f.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "12",
+      "name": "Women's V-Neck Mesh Elegant Mid-Length  | Color: cream | Size: Various",
+      "rating": "4.6",
+      "price": "490",
+      "image": "https://i.pinimg.com/1200x/6f/ee/ed/6feeed2d664b8a309f7cdd62ac585d02.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "13",
+      "name": "Women's V-Neck Mesh Elegant Mid-Length Dress For Valentine's Day | Color: black and white | Size: Various",
+      "rating": "4.7",
+      "price": "870",
+      "image": "https://i.pinimg.com/1200x/85/11/f3/8511f3782f6c1e4e3c8420c97b7f2284.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "14",
+      "name": "Women's jacket | Color: grey | Size: Various",
+      "rating": "4.8",
+      "price": "790",
+      "image": "https://i.pinimg.com/736x/e2/e3/b8/e2e3b898c25fa247995a0b767e563cd8.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "15",
+      "name": "Women's shirt with jacket Mesh Elegant Mid-Length Dress For Valentine's Day | Color: Blue | Size: Various",
+      "rating": "4.9",
+      "price": "599",
+      "image": "https://i.pinimg.com/736x/76/a3/7f/76a37f5a6b98b58a5678423f55fe6b78.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "16",
+      "name": "Women's shirt with setor| Color: white and pink | Size: Various",
+      "rating": "3.7",
+      "price": "763",
+      "image": "https://i.pinimg.com/1200x/41/7a/9c/417a9c614d5cb6605bf6f83bdf898672.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "17",
+      "name": "vintage aesthetic outfit",
+      "rating": "3.5",
+      "price": "790",
+      "image": "https://i.pinimg.com/736x/57/0b/2a/570b2a9e2fdb784121603efebcec9d32.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "18",
+      "name": "vintage aesthetic outfit ",
+      "rating": "3.8",
+      "price": "490",
+      "image": "https://i.pinimg.com/736x/ff/f2/a2/fff2a25becc449d8c33021b95e33ab97.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "19",
+      "name": "Women's short setore | Color: white mixed | Size: Various",
+      "rating": "3.2",
+      "price": "763",
+      "image": "https://i.pinimg.com/1200x/40/29/5c/40295cb61753fcd9abb770de65f62d41.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Korean outfit ",
+      "rating": "2.9",
+      "price": "870",
+      "image": "https://i.pinimg.com/736x/b6/f9/c5/b6f9c580d12d27815c79fe23664510e0.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Women Plus Size Set: Stand Collar Short Sleeve Solid Print Blouse And Wide Leg Loose Casual Pants",
+      "rating": "3",
+      "price": "600",
+      "image": "https://i.pinimg.com/1200x/b3/60/3d/b3603d5d7e4370791f207ee8f7083ab3.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "2pcs/Set Women Plus Size Embroidered Floral Short Sleeve Shirt Set",
+      "rating": "3.4",
+      "price": "795",
+      "image": "https://i.pinimg.com/1200x/62/8e/60/628e60c1db0d4f14a5b7cfd37028381c.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "2pcs/Set Women Geometric Print Shirt And Pants Casual Holiday Suit",
+      "rating": "3.8",
+      "price": "790",
+      "image": "https://i.pinimg.com/1200x/f4/c7/ba/f4c7ba1ba54a1527ca7903dce6833dd6.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Highly Rated Products At Low Price Find Everything You Need.",
+      "rating": "5",
+      "price": "1100",
+      "image": "https://i.pinimg.com/1200x/6f/ee/ed/6feeed2d664b8a309f7cdd62ac585d02.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "2 pièces/set femmes grande taille Chemise à manches longues boutonnée couleur unie et pantalon à jambes larges assortis ",
+      "rating": "5",
+      "price": "599",
+      "image": "https://i.pinimg.com/1200x/64/aa/a8/64aaa819747e8afdc94ef37e6b5afeba.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "haki Casual Collar Long Sleeve Polyester Plain Shirt Embellished Non-Stretch Women Clothing",
+      "rating": "3",
+      "price": "763",
+      "image": "https://i.pinimg.com/1200x/c1/2f/42/c12f42bc103308efc3f5bf120f91a4e6.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Beautiful Flower Patch",
+      "rating": "4.8",
+      "price": "490",
+      "image": "https://i.pinimg.com/1200x/22/6e/09/226e099c05da6fe635399636a608773e.jpg",
+      "featured": true,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Highly Rated Products At Low Price Find Everything You Need.",
+      "rating": "4.6",
+      "price": "490",
+      "image": "https://i.pinimg.com/736x/72/d0/92/72d0922800315df72105497a66d27af8.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Tween Girl Striped Sun Protection Shirt, Spring/Summer, Korean Style,Holiday,Summer,Travel",
+      "rating": "3",
+      "price": "763",
+      "image": "https://i.pinimg.com/1200x/b0/72/cc/b072cc9a110c45bc75af88d5fbd550e5.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Women's Clothing | Fashion Clothes for Men, Women & Kids Online",
+      "rating": "5",
+      "price": "790",
+      "image": "https://i.pinimg.com/736x/c0/70/4c/c0704c09910d14b7494719a9e75bf3e2.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Tween Girl Striped Sun Protection Shirt, Spring Summer,Holiday,Summer,Travel",
+      "rating": "4.7",
+      "price": "870",
+      "image": "https://i.pinimg.com/1200x/9f/2d/1b/9f2d1ba55fd1fba31a6c10246a54bf94.jpg",
+      "featured": false,
+      "category": "women"
+    },
+    {
+      "id": "10",
+      "name": "Women's Casual Everyday Button-Up Embroidered Long Sleeve Shirt, Suitable For Summer",
+      "rating": "4.5",
+      "price": "790",
+      "image": "https://i.pinimg.com/1200x/2b/db/4b/2bdb4b464b3c7b843afced35647118fd.jpg",
+      "featured": false,
+      "category": "women"
+
+    },
+    {
+      "id": "11",
+      "name": "ivory lehenga in cotton base with thread and sequins embroidery, including handmade tassels.",
+      "rating": "4",
+      "price": "1700",
+      "image": "https://i.pinimg.com/1200x/95/13/20/951320f9276f356087ba7c92f047a60e.jpg",
+      "featured": true,
+      "category": "kids"
+    },  {
+      "id": "12",
+      "name": "",
+      "rating": "3",
+      "price": "790",
+      "image": "https://i.pinimg.com/736x/57/fd/f2/57fdf27a0152df0a654d6c3209a0bf0d.jpg",
+      "featured": true,
+      "category": "kids"
+    },  {
+      "id": "13",
+      "name": "💖 Traditional Yet Trendy Kidswear 💖 GETDRESSEDAUSTRALIA",
+      "rating": "4",
+      "price": "790",
+      "image": "https://i.pinimg.com/1200x/c2/89/ca/c289ca2e95b519c0b74fd3bd8c68a474.jpg",
+      "featured": true,
+      "category": "kids"
+    },  {
+      "id": "14",
+      "name": "Mauve Böhmisch Collar Kurzärmelig Stoff Geblümt,Überalles Muster Ausgestellt Embellished Undehnbar",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": "kids"
+    },  {
+      "id": "15",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "https://i.pinimg.com/736x/97/28/63/972863379a598b4d9073eca1d063188d.jpg",
+      "featured": true,
+      "category": "kids"
+    },  {
+      "id": "16",
+      "name": "frock lavendra color",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": ""
+    },  {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": ""
+    },  {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": ""
+    },  {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": ""
+    },  {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": true,
+      "category": ""
+    },  {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }, {
+      "id": "11",
+      "name": "",
+      "rating": "4",
+      "price": "790",
+      "image": "",
+      "featured": false,
+      "category": ""
+    }
+  ]
+}
