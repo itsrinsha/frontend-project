@@ -2,11 +2,12 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const { login } = useContext(AuthContext);
+const Signup = () => {
+  const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
+    name: "",
     email: "",
     password: ""
   });
@@ -21,12 +22,8 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      const loggedUser = await login(form.email, form.password);
-      if (loggedUser.role === "admin") {
-        navigate("/admin"); // redirect admin to admin dashboard
-      } else {
-        navigate("/"); // redirect normal user
-      }
+      await signup(form);
+      navigate("/"); // redirect after signup
     } catch (err) {
       setError(err.message);
     }
@@ -34,15 +31,16 @@ const Login = () => {
 
   return (
     <div className="auth-form">
-      <h2>Login</h2>
+      <h2>Signup</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
-        <button type="submit">Login</button>
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

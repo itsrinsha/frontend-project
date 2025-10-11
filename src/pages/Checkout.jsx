@@ -1,85 +1,159 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthContext";
+import { CartContext } from "../context/CartContext";
 
-function Checkout({ cart, setCart }) {
-  const location = useLocation();
+const CheckoutPage = () => {
+  const { cart, totalPrice, clearCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  
-  const product = location.state || null;
+  const [name, setName] = useState(user?.name || "");
+  const [phone, setPhone] = useState(user?.number || "");
   const [address, setAddress] = useState("");
-  const buyNowProdect = location.state?.buyNowProdect; 
-  const [paymentMethod, setPaymentMethod] = useState("card");
-  const [quantity, setQuantity] = useState(product ? product.quantity : 1);
-  const [size, setSize] = useState(product ? product.size : "M");
+  const [paymentMethod, setPaymentMethod] = useState("Credit Card");
+  const [loading, setLoading] = useState(false);
 
-  const productsToCheckout = buyNowProdect? 
-     [{...buyNowProdect,quantity:1}]: cart
+  useEffect(() => {
+    if (!user) navigate("/login");
+  }, [user, navigate]);
 
-  if (productsToCheckout === 0) {
-    return <p className="text-center mt-20 text-xl">No product selected for checkout!</p>;
-  }
-  
+  const handleCheckout = async (e) => {
+    e.preventDefault();
 
-  const handlePlaceOrder = () => {
-    alert(`Order placed for ${product ? product.name : "items in cart"}!\nPayment Method: ${paymentMethod}\nAddress: ${address}\nSize: ${size}\nQuantity: ${quantity}`);
-    setCart([]);
-    
-    navigate("/");
+    if (!address || !phone) {
+      toast.error("Please fill in all details");
+      return;
+    }
+    if (cart.length === 0) {
+      toast.error("Cart is empty");
+      return;
+    }
+
+    setLoading(true);
+
+    const newOrder = {
+      id: `order_${Date.now()}`,
+      userId: user.id,
+      date: new Date().toISOString(),
+      items: cart.map((item) => ({
+        id: item.id,
+        name: item.title,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.image,
+      })),
+      total: totalPrice,
+      shippingAddress: address,
+      paymentMethod,
+      phone,
+      status: "Pending",
+    };
+
+    try {
+      // Get current user data
+      const res = await axios.get(`http://localhost:5000/users/${user.id}`);
+      const userData = res.data;
+
+      // Update orders and clear cart
+      const updatedOrders = [...(userData.orders || []), newOrder];
+
+      await axios.patch(`http://localhost:5000/users/${user.id}`, {
+        orders: updatedOrders,
+        cart: [],
+      });
+
+      clearCart();
+      toast.success("Order placed successfully!");
+      navigate("/orders");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to place order");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16 px-6 flex justify-center">
-      <div className="bg-white rounded-3xl shadow-xl p-8 max-w-2xl w-full flex flex-col gap-6">
-        <h2 className="text-3xl font-bold text-gray-900 text-center">Checkout</h2>
+    <div className="min-h-screen px-6 py-16 bg-gray-50">
+      <h2 className="text-3xl font-bold mb-6">Checkout</h2>
 
-        {product && (
-          <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
-            <div>
-              <p className="font-semibold">{product.name}</p>
-              <p className="text-blue-700 font-bold">₹{product.price}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Cart Summary */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
+          {cart.map((item) => (
+            <div key={item.id} className="flex justify-between mb-2">
+              <span>{item.title} x {item.quantity}</span>
+              <span>₹{item.price * item.quantity}</span>
             </div>
-            <div>
-              <p>Quantity: {quantity}</p>
-              <p>Size: {size}</p>
-            </div>
-          </div>
-        )}
-
-        <div>
-          <label className="font-semibold">Shipping Address</label>
-          <textarea
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Enter your address..."
-            className="w-full border rounded p-2 mt-1"
-          />
+          ))}
+          <hr className="my-4" />
+          <p className="text-lg font-bold">Total: ₹{totalPrice}</p>
         </div>
 
-        <div>
-          <label className="font-semibold">Payment Method</label>
+        {/* Shipping & Payment Form */}
+        <form
+          onSubmit={handleCheckout}
+          className="bg-white p-6 rounded-lg shadow flex flex-col gap-4"
+        >
+          <h3 className="text-xl font-semibold mb-2">Shipping Details</h3>
+
+          {/* Name */}
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="border p-2 rounded w-full"
+            required
+          />
+
+          {/* Phone Number */}
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="border p-2 rounded w-full"
+            required
+          />
+
+          {/* Address */}
+          <textarea
+            placeholder="Shipping Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="border p-2 rounded w-full"
+            required
+          />
+
+          {/* Payment Method */}
           <select
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
-            className="w-full border rounded p-2 mt-1"
+            className="border p-2 rounded w-full"
           >
-            <option value="card">Credit/Debit Card</option>
-            <option value="upi">UPI</option>
-            <option value="cod">Cash on Delivery</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
           </select>
-        </div>
 
-        <button
-          onClick={handlePlaceOrder}
-          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition mt-4"
-        >
-          Place Order
-        </button>
+          {/* Submit */}
+          <button
+            type="submit"
+            className="mt-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold"
+            disabled={loading}
+          >
+            {loading ? "Placing Order..." : "Place Order"}
+          </button>
+        </form>
       </div>
     </div>
   );
-}
+};
 
-export default Checkout;
-
-
+export default CheckoutPage;

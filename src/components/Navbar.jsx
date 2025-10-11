@@ -7,7 +7,7 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Detect user from localStorage (matching your login component)
+  
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
     if (userData) {
@@ -19,7 +19,7 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
   const handleLogin = () => navigate("/login");
 
   const handleLogout = () => {
-    // ✅ Clear the same data you saved during login
+    
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUserName("");
@@ -33,13 +33,13 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-lg px-6 py-4 flex justify-between items-center">
       
-      {/* Logo / Brand Name */}
+      
       <NavLink to="/" className="text-2xl font-bold text-navy flex items-center gap-2">
         <span className="bg-gold text-white p-2 rounded-lg">G</span>
         Glanzio
       </NavLink>
 
-      {/* Navigation Links */}
+     
       <ul className="flex space-x-8 items-center">
         <li>
           <NavLink
@@ -79,7 +79,7 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
         </li>
       </ul>
 
-      {/* Search Bar */}
+     
       <div className="flex-1 max-w-md mx-4">
         <input
           type="text"
@@ -90,9 +90,9 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
         />
       </div>
 
-      {/* Icons and User Section */}
+     
       <div className="flex space-x-6 items-center text-xl">
-        {/* Wishlist */}
+       
         <NavLink
           to="/wishlist"
           className="relative hover:text-red-500 transition-colors text-gray-700"
@@ -105,29 +105,34 @@ function Navbar({ cart, wishlist, searchQuery, setSearchQuery }) {
           )}
         </NavLink>
 
-        {/* Cart */}
+      
         <NavLink
           to="/cart"
-          className="relative hover:text-gold transition-colors text-gray-700"
+          className="relative hover:text-red-500 transition-colors text-gray-700"
         >
           <FaShoppingCart />
           {cart.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-gold text-navy text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               {cart.length}
             </span>
           )}
         </NavLink>
-
-        {/* User Dropdown */}
+          <NavLink
+  to="/orders"
+  className="text-gray-800 hover:text-blue-600 font-medium"
+>
+  orders
+</NavLink>
+     
         {isLoggedIn ? (
           <div className="flex items-center gap-4">
-            {/* Greeting */}
+           
             <div className="hidden sm:flex items-center gap-2 text-sm text-gray-700">
               <FaUser className="text-gold" />
               <span>Hello, {userName}</span>
             </div>
 
-            {/* Dropdown Menu */}
+            
             <div className="relative group">
               <button className="flex items-center gap-2 bg-gray-100 rounded-full p-2 hover:bg-gold hover:text-white transition-colors">
                 <FaUser className="text-sm" />

@@ -1,68 +1,75 @@
-import React from "react";
-import { FaTrash } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { WishlistContext } from "../context/WishlistContext";
+import { CartContext } from "../context/CartContext";
+import { AuthContext } from "../context/AuthContext";
 
-function Wishlist({ wishlist, setWishlist, cart, setCart }) {
-  const handleRemove = (id) => {
-    setWishlist(wishlist.filter((item) => item.id !== id));
-  };
+const WishlistPage = () => {
+  const { wishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { cart, addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  if (!user) {
+    navigate("/login");
+    return null;
+  }
 
   const handleAddToCart = (product) => {
-    if (!cart.find((item) => item.id === product.id)) {
-      setCart([...cart, product]);
+    const exists = cart.find((item) => item.id === product.id);
+    if (exists) {
+      toast.info("Item already in cart");
+      return;
     }
+    addToCart({ ...product, quantity: 1 });
+    toast.success("Added to cart!");
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
-      <h2 className="text-4xl font-bold text-center mb-12">My Wishlist</h2>
-      {wishlist.length === 0 ? (
-        <p className="text-center text-gray-700">Your wishlist is empty</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {wishlist.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6 flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-gray-900">{item.name}</h3>
-                <p className="text-blue-700 font-bold text-lg">₹{item.price}</p>
-                <div className="flex justify-between items-center mt-2">
-                  <button
-                    onClick={() => handleAddToCart(item)}
-                    className="bg-[#1E3A8A] text-white px-4 py-2 rounded-lg hover:bg-[#3B82F6] transition"
-                  >
-                    Add to Cart
-                  </button>
-                  <button
-                    onClick={() => handleRemove(item.id)}
-                    className="text-red-500 hover:text-red-600 text-xl"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-               <NavLink
-  to={`/products/${item.id}`}
-  state={{ product: item }}  
-  className="mt-2 inline-block bg-[#1E3A8A] text-white px-4 py-2 rounded-lg hover:bg-[#3B82F6] transition text-center"
->
-  View Details
-</NavLink>
+  if (wishlist.length === 0)
+    return <p className="text-center mt-20 text-xl">Your wishlist is empty</p>;
 
-              </div>
+  return (
+    <div className="min-h-screen px-6 py-16 bg-gray-50">
+      <h2 className="text-3xl font-bold mb-6">My Wishlist</h2>
+
+      <div className="flex flex-col gap-6">
+        {wishlist.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col sm:flex-row items-center gap-4 bg-white p-4 rounded-lg shadow"
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-32 h-32 object-cover rounded cursor-pointer"
+              onClick={() => navigate(`/product/${item.id}`)}
+            />
+
+            <div className="flex-1 flex flex-col gap-2">
+              <h4 className="font-semibold text-lg">{item.title}</h4>
+              <p className="text-gray-600">₹{item.price}</p>
             </div>
-          ))}
-        </div>
-      )}
+
+            <div className="flex flex-col sm:flex-row gap-2 items-center">
+              <button
+                onClick={() => handleAddToCart(item)}
+                className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Add to Cart
+              </button>
+              <button
+                onClick={() => removeFromWishlist(item.id)}
+                className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default Wishlist;
-
+export default WishlistPage;

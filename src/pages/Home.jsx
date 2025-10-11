@@ -34,7 +34,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
   const handleAddToCart = (product) => {
     if (!cart.find((p) => p.id === product.id)) {
       setCart([...cart, product]);
-      // Add animation feedback
+      
       const button = document.getElementById(`cart-${product.id}`);
       if (button) {
         button.classList.add('scale-110');
@@ -46,7 +46,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
   const handleAddToWishlist = (product) => {
     if (!wishlist.find((p) => p.id === product.id)) {
       setWishlist([...wishlist, product]);
-      // Add animation feedback
+      
       const button = document.getElementById(`wishlist-${product.id}`);
       if (button) {
         button.classList.add('scale-110');
@@ -68,9 +68,9 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Hero Section */}
+      
       <section className="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20 px-6 overflow-hidden">
-        {/* Background Pattern */}
+        
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full"></div>
           <div className="absolute top-40 right-20 w-32 h-32 bg-white rounded-full"></div>
@@ -105,7 +105,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
         </div>
       </section>
 
-      {/* Stats Section */}
+      
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -125,10 +125,10 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
         </div>
       </section>
 
-      {/* Featured Products Section */}
+      
       <section id="featured" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
+          
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Featured Products
@@ -139,24 +139,24 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-6 rounded-full"></div>
           </div>
 
-          {/* Products Grid */}
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden"
               >
-                {/* Product Image */}
+                
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  {/* Hover Overlay */}
+                  
                   <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                   
-                  {/* Quick Actions */}
+                  
                   <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       id={`wishlist-${product.id}`}
@@ -181,13 +181,13 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
                   </div>
                 </div>
 
-                {/* Product Info */}
+                
                 <div className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                     {product.name}
                   </h3>
                   
-                  {/* Rating */}
+                  
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex">
                       {renderStars(product.rating)}
@@ -197,7 +197,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
                     </span>
                   </div>
 
-                  {/* Price */}
+                
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-2xl font-bold text-blue-600">
                       ₹{product.price}
@@ -209,7 +209,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
                     )}
                   </div>
 
-                  {/* Action Buttons */}
+                  
                   <div className="flex gap-2">
                     <NavLink
                       to={`/products/${product.id}`}
@@ -239,7 +239,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
             ))}
           </div>
 
-          {/* View All Products Button */}
+          
           <div className="text-center mt-12">
             <button
               onClick={() => navigate("/products")}
@@ -251,7 +251,7 @@ function Home({ cart, setCart, wishlist, setWishlist }) {
         </div>
       </section>
 
-      {/* Features Section */}
+      
      
     </div>
   );

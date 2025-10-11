@@ -98,7 +98,7 @@ function About() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-4xl font-bold mb-4">Stay Updated</h2>
