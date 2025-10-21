@@ -1,16 +1,12 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "./AuthContext"; // Import AuthContext
 
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
+  const { user } = useContext(AuthContext); // ✅ Use AuthContext user
   const [wishlist, setWishlist] = useState([]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
-  }, []); 
 
   useEffect(() => {
     const fetchWishlist = async () => {
@@ -61,6 +57,7 @@ export const WishlistProvider = ({ children }) => {
       console.error("Failed to remove from wishlist", err);
     }
   };
+
   const clearWishlist = async () => {
     if (!user) return;
 
@@ -73,11 +70,12 @@ export const WishlistProvider = ({ children }) => {
       console.error("Failed to clear wishlist", err);
     }
   };
+
   return (
     <WishlistContext.Provider
       value={{
         wishlist,
-        setWishlist, 
+        setWishlist,
         addToWishlist,
         removeFromWishlist,
         clearWishlist,

@@ -1,71 +1,64 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useLoaderData, useLocation } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const baseURL = "http://localhost:5000/users";
+  const [isLoading, setIsLoading] = useState(true);
+  // const navigate=useLocation()
 
-  // Persist login
+  // Load user from localStorage on app start
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (savedUser) setUser(savedUser);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+    setIsLoading(false);
   }, []);
 
-  // Signup
-  const signup = async ({ name, email, password }) => {
-    // check if email already exists
-    const res = await axios.get(`${baseURL}?email=${email}`);
-    if (res.data.length > 0) {
-      throw new Error("Email already registered");
-    }
-
-    const newUser = {
-      id: Date.now().toString(),
-      name,
-      email,
-      password,
-      role: "user",
-      isBlocked: false,
-      isActive: true,
-      cart: [],
-      wishlist: [],
-      orders: [],
-      created_at: new Date().toISOString()
-    };
-
-    const created = await axios.post(baseURL, newUser);
-    localStorage.setItem("user", JSON.stringify(created.data));
-    setUser(created.data);
-    return created.data;
+  const loginUser = (userData) => {
+    setUser(userData);
+    // if(userData.role==='admin'){
+    //   navigate()
+    // }
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  // Login
-  const login = async (email, password) => {
-    const res = await axios.get(`${baseURL}?email=${email}&password=${password}`);
-    if (res.data.length === 0) {
-      throw new Error("Invalid email or password");
-    }
-
-    const loggedUser = res.data[0];
-
-    if (loggedUser.isBlocked) throw new Error("Your account is blocked");
-    if (!loggedUser.isActive) throw new Error("Your account is inactive");
-
-    localStorage.setItem("user", JSON.stringify(loggedUser));
-    setUser(loggedUser);
-    return loggedUser;
-  };
-
-  const logout = () => {
-    localStorage.removeItem("user");
+  const logoutUser = () => {
     setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  // Updated signup to POST user to backend
+  const signup = async (userData) => {
+    try {
+      // Add default fields
+      const newUser = {
+        ...userData,
+        role: "user",
+        isBlocked: false,
+        isActive: true,
+        cart: [],
+        wishlist: [],
+      };
+
+      const res = await axios.post("http://localhost:5000/users", newUser);
+
+      setUser(res.data);
+      localStorage.setItem("user", JSON.stringify(res.data));
+
+      return res.data;
+    } catch (err) {
+      console.error("Signup failed:", err);
+      throw new Error(err.response?.data?.message || "Signup failed");
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, signup }}>
-      {children}
+    <AuthContext.Provider
+      value={{ user, loginUser, logoutUser, signup, isLoading }}
+    >
+      {!isLoading && children}
     </AuthContext.Provider>
   );
 };
