@@ -13,6 +13,7 @@ export const getProducts = async (req, res) => {
     if (category && category !== "all") {
       query.category = category;
     }
+    console.log(getProducts, query);
 
     const pageNumber = Number(page);
     const pageSize = Number(limit);
