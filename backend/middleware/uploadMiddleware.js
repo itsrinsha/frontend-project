@@ -15,13 +15,14 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'liora-ecommerce',
-    allowed_formats: ['jpeg', 'jpg', 'png', 'webp'],
+    allowed_formats: ['jpeg', 'jpg', 'png', 'webp', 'mp4', 'mov', 'avi', 'mkv'],
+    resource_type: 'auto', // Required to support both images and videos
   },
 });
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5000000 }, // 5MB limit
+  limits: { fileSize: 100000000 }, // 100MB limit to allow for videos
 });
 
 export default upload;
