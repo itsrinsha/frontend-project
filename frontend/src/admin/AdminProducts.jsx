@@ -89,18 +89,12 @@ const AdminProductSection = () => {
     }
 
     try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
       if (editId) {
-        await api.put(`/products/${editId}`, formData, config);
+        await api.put(`/products/${editId}`, formData);
         setEditId(null);
         alert("Product updated successfully!");
       } else {
-        await api.post("/products", formData, config);
+        await api.post("/products", formData);
         alert("Product added successfully!");
       }
 

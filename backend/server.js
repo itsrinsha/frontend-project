@@ -22,7 +22,8 @@ try {
   'http://localhost:5175',
   'http://localhost:5176',
   'https://frontend-project-one-lake.vercel.app',
-  'https://frontend-project-gxf6240rq-itsrinshas-projects.vercel.app'
+  'https://frontend-project-gxf6240rq-itsrinshas-projects.vercel.app',
+  'https://frontend-project-dd9s4yq1y-itsrinshas-projects.vercel.app'
 ];
     
     app.use(
