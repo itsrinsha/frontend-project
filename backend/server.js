@@ -29,11 +29,14 @@ try {
     
     app.use(
   cors({
-    origin(origin, callback) {
+    origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
+        callback(null, true);
+      } else {
+        // Instead of throwing an error which causes a 500 response,
+        // we pass false so standard CORS headers are omitted and the browser blocks it cleanly.
+        callback(null, false);
       }
-      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
   })
